@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,6 +33,11 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //去掉顶部标题
+        getSupportActionBar().hide();
+        //去掉最上面时间、电量等
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
+                ,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
         //设置此界面为竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -77,7 +83,8 @@ public class LoginActivity extends AppCompatActivity {
         qq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
+                startActivity(intent);
             }
         });
         wx.setOnClickListener(new View.OnClickListener() {
